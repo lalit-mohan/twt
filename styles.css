@@ -1,0 +1,429 @@
+/* ==========================================================================
+   1. GLOBAL VARIABLES & RESET
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Nunito+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bg-bright: #EBB0FF;       /* Vivid Orchid Pink from screenshot */
+    --bg-light: #f3f0e9;        /* Slightly warmer warm gray */
+    --text-primary: #0F0C1B;    /* Off-black */
+    --btn-primary-bg: hsl(229.71, 43.21%, 15.88%);   /* Vivid Orchid Pink from screenshot */
+    --text-muted: #555555;      /* Charcoal */
+    --font-heading: 'Manrope', sans-serif;
+    --font-sans: 'Nunito Sans', system-ui, sans-serif;
+    --site-max-width: 1500px;
+    --gutter: 11px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-bright);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   2. SITE HEADER (STUCK TO TOP)
+   ========================================================================== */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 4vw;
+    background-color: var(--bg-bright);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+}
+
+.site-header .logo a {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--text-primary);
+    margin: 0 1.5rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.main-nav a.active, .main-nav a:hover {
+    opacity: 1;
+}
+
+.btn-email {
+    text-decoration: none;
+    color: hsl(294.17,100%,79.8%);
+    border: 1px solid var(--text-primary);
+    border-radius: 100px;
+    padding: 1.2rem 1.8rem;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    background: var(--btn-primary-bg);
+    transition: all 0.3s ease;
+}
+
+.btn-email:hover {
+    background-color: var(--text-primary);
+    color: var(--bg-bright);
+}
+
+/* ==========================================================================
+   3. THE FLUID GRID ENGINE (THE HEART OF THE CLONE)
+   ========================================================================== */
+.page-section {
+    position: relative;
+    padding: 140px 4vw 80px 4vw;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.section-bright { background-color: var(--bg-bright); }
+.section-light { background-color: var(--bg-light); }
+
+/* Desktop 24-Column Matrix */
+.grid-engine {
+    display: grid;
+    width: 100%;
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+    row-gap: var(--gutter);
+    column-gap: var(--gutter);
+    grid-template-columns: repeat(24, minmax(0, 1fr));
+}
+
+/* Explicit Block Assignments via Grid Coordinates */
+#hero .title-block {
+    grid-area: 4 / 2 / 12 / 13; /* row-start / col-start / row-end / col-end */
+}
+
+#hero .body-block {
+    grid-area: 12 / 2 / 24 / 14;
+}
+
+#hero .spinning-spiral {
+    grid-area: 4 / 15 / 18 / 25;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#intro .text-block {
+    grid-area: 5 / 15 / 15 / 24;
+    text-align: left;
+}
+
+#intro .image-block {
+    grid-area: 3 / 2 / 16 / 13;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#onboarding .text-block {
+    grid-area: 4 / 2 / 12 / 15;
+}
+
+#final-cta .text-block {
+    grid-area: 4 / 2 / 14 / 12;
+}
+
+#final-cta .cta-image {
+    grid-area: 4 / 13 / 14 / 24;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ==========================================================================
+   4. TYPOGRAPHY & ELEMENTS
+   ========================================================================== */
+h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 4.5vw, 4.2rem);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -1px;
+}
+
+h2, h3 {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+p {
+    font-size: clamp(1.1rem, 1.3vw, 1.35rem);
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+}
+
+p em {
+    font-family: var(--font-heading);
+    font-size: 1.25 times;
+    color: var(--text-primary);
+}
+
+.btn-primary {
+    display: inline-block;
+    text-decoration: none;
+    background-color: var(--text-primary);
+    border-radius: 100px;
+    color: var(--bg-bright);
+    padding: 1.2rem 2.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+    margin-top: 1rem;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+/* Animated Spiral Placeholder */
+.spiral-graphic {
+    font-size: 12rem;
+    animation: smooth-spin 20s linear infinite;
+    transform-origin: center;
+}
+
+@keyframes smooth-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   5. FOOTER ARCHITECTURE
+   ========================================================================== */
+.site-footer {
+    position: relative;
+    background-color: #111111;
+    color: #ffffff;
+    padding: 5rem 6vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: flex-start;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative;
+    z-index: 2;
+}
+
+.site-footer h2 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.site-footer p {
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.site-footer .social-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.site-footer .social-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
+.site-footer .social-links a:hover {
+    opacity: 1;
+}
+
+/* Interactive Background Overlays */
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none; /* Let pointer events fall through to elements */
+}
+
+/* ==========================================================================
+   6. RESPONSIVE ENGINE (FALLBACK TO 8-COLUMN MATRIX FOR MOBILE)
+   ========================================================================== */
+@media (max-width: 960px) {
+    .site-header { padding: 1.5rem 6vw; }
+    .main-nav { display: none; } /* Standard collapse behavior */
+
+    .grid-engine {
+        grid-template-columns: repeat(8, minmax(0, 1fr));
+    }
+
+    /* Collapse items into stacks on mobile viewports */
+    #hero .title-block, #hero .body-block, #hero .spinning-spiral,
+    #intro .text-block, #intro .image-block, 
+    #onboarding .text-block,
+    #final-cta .text-block, #final-cta .cta-image {
+        grid-area: auto / 1 / auto / -1; 
+        text-align: left;
+    }
+    
+    .page-section {
+        padding: 100px 6vw 40px 6vw;
+        min-height: auto;
+    }
+    
+    .spiral-graphic {
+        font-size: 6rem;
+        margin: 2rem 0;
+    }
+
+    .site-footer {
+        grid-template-columns: 1fr;
+        text-align: left;
+    }
+
+    .footer-right {
+        align-items: flex-start;
+    }
+}
+
+/* ==========================================================================
+   ABOUT PAGE EXPLICIT GRID ENGINE
+   ========================================================================== */
+
+/* Section 1: About Hero with Gradient */
+#about-hero {
+    background: linear-gradient(180deg, #EBB0FF 0%, rgba(235, 176, 255, 0) 100%);
+}
+
+#about-hero .about-title {
+    grid-area: 4 / 2 / 8 / 14;
+}
+
+#about-hero .about-tagline {
+    grid-area: 11 / 2 / 15 / 14;
+}
+
+#about-hero .about-profile-img {
+    grid-area: 2 / 16 / 13 / 25;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#about-hero .about-profile-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Section 2 Grid Setup */
+#about-approach .approach-header {
+    grid-area: 1 / 2 / 4 / 25;
+    text-align: center;
+}
+
+#about-approach .approach-statement {
+    grid-area: 4 / 2 / 16 / 25;
+}
+
+/* Section 3 Grid Setup */
+#about-framework .framework-title {
+    grid-area: 1 / 2 / 3 / 25;
+}
+
+#about-framework .framework-list-left {
+    grid-area: 6 / 2 / 11 / 13;
+}
+
+#about-framework .framework-list-right {
+    grid-area: 6 / 14 / 11 / 25;
+}
+
+#about-framework .framework-modal {
+    grid-area: 12 / 2 / 20 / 24;
+}
+
+/* Specific Content Stylings */
+.large-prose {
+    font-size: clamp(1.2rem, 1.8vw, 1.7rem);
+    line-height: 1.4;
+}
+
+.highlight-line {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--text-primary);
+    padding-bottom: 8px;
+    display: inline-block;
+}
+
+.pillars-stack p {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+/* Custom list styling to mimic Squarespace layouts */
+#about-framework ul {
+    list-style-type: square;
+    padding-left: 1.25rem;
+}
+
+#about-framework li {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+}
+
+/* Mobile Adaptive Override for About sections */
+@media (max-width: 767px) {
+    #about-page .grid-engine > div,
+    #about-page .grid-engine > section {
+        grid-area: auto / 1 / auto / -1 !important;
+        text-align: left !important;
+    }
+    #about-approach .approach-header { text-align: left; }
+}
