@@ -576,7 +576,7 @@ canvas {
 }
 
 .pillars-stack {
-    margin-top: 3rem;
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -592,6 +592,7 @@ canvas {
     .about-hero-container {
         flex-direction: column;
         gap: 4rem;
+        margin-top: 120px;
     }
 
     .about-hero-left, .about-hero-right {
@@ -601,6 +602,7 @@ canvas {
 
     .about-hero-right {
         justify-content: center;
+        padding-bottom: 2rem;
     }
 
     .framework-lists {
@@ -693,7 +695,7 @@ canvas {
         gap: 2rem;
         text-align: left;
         width: 100%;
-        padding: 0 3rem;
+        padding: 0 2rem;
     }
 
     .cta-left, .cta-right {
@@ -767,7 +769,7 @@ canvas {
 
     #about-approach,
     #about-framework {
-        padding: 64px 4vw;
+        padding: 2rem 2rem;
         text-align: left;
     }
 
