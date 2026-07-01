@@ -27,5 +27,18 @@
 - approach-statement
     [] the element should span entire width of view
 
+## SEO Maintenance Checklist
+- [ ] Verify title and meta description are unique on each page.
+- [ ] Confirm canonical URLs match production URLs.
+- [ ] Validate Open Graph and Twitter tags with social preview tools.
+- [ ] Re-check JSON-LD structured data in Rich Results Test.
+- [ ] Update sitemap.xml when adding, removing, or renaming pages.
+- [ ] Ensure robots.txt points to the current sitemap URL.
+- [ ] Submit sitemap.xml in Google Search Console.
+- [ ] Request indexing for new or significantly updated pages.
+- [ ] Review Search Console coverage for crawl or indexing issues.
+- [ ] Track top queries and improve low-CTR page titles/descriptions.
+- [ ] Re-audit Core Web Vitals and mobile usability monthly.
+
 
 
